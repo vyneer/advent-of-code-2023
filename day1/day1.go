@@ -4,7 +4,6 @@ import (
 	"aoc2023/day"
 	"bufio"
 	"fmt"
-	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -62,7 +61,7 @@ func (d *Day1) GetDayString() string {
 func solve(path string, solverFunc solverFunc) (int, error) {
 	f, err := os.Open(path)
 	if err != nil {
-		log.Fatalln(err)
+		return 0, err
 	}
 	defer f.Close()
 	scanner := bufio.NewScanner(f)
