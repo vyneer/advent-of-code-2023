@@ -4,6 +4,7 @@ import (
 	"aoc2023/day"
 	"aoc2023/day1"
 	"aoc2023/day2"
+	"aoc2023/day3"
 	"fmt"
 	"log"
 )
@@ -14,6 +15,7 @@ func main() {
 	days := []day.Solver{
 		day1.New(fmt.Sprintf("%s/%s", inputFolder, "day1.txt")),
 		day2.New(fmt.Sprintf("%s/%s", inputFolder, "day2.txt")),
+		day3.New(fmt.Sprintf("%s/%s", inputFolder, "day3.txt")),
 	}
 
 	for _, v := range days {
