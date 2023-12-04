@@ -71,12 +71,14 @@ func solve(path string, solverFunc solverFunc) (int, error) {
 	for scanner.Scan() {
 		numSlice := solverFunc(scanner.Text())
 
-		num, err := strconv.Atoi(fmt.Sprintf("%s%s", numSlice[0], numSlice[len(numSlice)-1]))
-		if err != nil {
-			return 0, err
-		}
+		if len(numSlice) > 0 {
+			num, err := strconv.Atoi(fmt.Sprintf("%s%s", numSlice[0], numSlice[len(numSlice)-1]))
+			if err != nil {
+				return 0, err
+			}
 
-		sum += num
+			sum += num
+		}
 	}
 
 	return sum, nil
