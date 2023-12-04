@@ -24,15 +24,18 @@ var numbers = map[string]string{
 type solverFunc func(string) []string
 
 type Day1 struct {
-	name string
-	path string
+	*day.Opts
 }
 
-func New(path string) day.Solver {
-	return &Day1{
-		name: "Day 1",
-		path: path,
+func New(opts ...day.OptFunc) day.Solver {
+	d := &Day1{}
+	d.Opts = day.DefaultOpts(d)
+
+	for _, o := range opts {
+		o(d.Opts)
 	}
+
+	return d
 }
 
 func (d *Day1) Solve() ([]string, error) {
@@ -43,7 +46,7 @@ func (d *Day1) Solve() ([]string, error) {
 	}
 
 	for _, v := range solvers {
-		num, err := solve(d.path, v)
+		num, err := solve(d.Path, v)
 		if err != nil {
 			return nil, err
 		}
@@ -55,7 +58,7 @@ func (d *Day1) Solve() ([]string, error) {
 }
 
 func (d *Day1) GetDayString() string {
-	return d.name
+	return d.Name
 }
 
 func solve(path string, solverFunc solverFunc) (int, error) {

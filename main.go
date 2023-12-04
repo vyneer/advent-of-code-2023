@@ -10,14 +10,12 @@ import (
 	"log"
 )
 
-const inputFolder string = "./inputs"
-
 func main() {
 	days := []day.Solver{
-		day1.New(fmt.Sprintf("%s/%s", inputFolder, "day1.txt")),
-		day2.New(fmt.Sprintf("%s/%s", inputFolder, "day2.txt")),
-		day3.New(fmt.Sprintf("%s/%s", inputFolder, "day3.txt")),
-		day4.New(fmt.Sprintf("%s/%s", inputFolder, "day4.txt")),
+		day1.New(),
+		day2.New(),
+		day3.New(),
+		day4.New(),
 	}
 
 	for _, v := range days {

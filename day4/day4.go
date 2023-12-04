@@ -14,15 +14,18 @@ import (
 type solverFunc func([]string) (int, error)
 
 type Day4 struct {
-	name string
-	path string
+	*day.Opts
 }
 
-func New(path string) day.Solver {
-	return &Day4{
-		name: "Day 4",
-		path: path,
+func New(opts ...day.OptFunc) day.Solver {
+	d := Day4{}
+	d.Opts = day.DefaultOpts(&d)
+
+	for _, o := range opts {
+		o(d.Opts)
 	}
+
+	return &d
 }
 
 func (d *Day4) Solve() ([]string, error) {
@@ -33,7 +36,7 @@ func (d *Day4) Solve() ([]string, error) {
 	}
 
 	for _, v := range solvers {
-		num, err := solve(d.path, v)
+		num, err := solve(d.Path, v)
 		if err != nil {
 			return nil, err
 		}
@@ -45,7 +48,7 @@ func (d *Day4) Solve() ([]string, error) {
 }
 
 func (d *Day4) GetDayString() string {
-	return d.name
+	return d.Name
 }
 
 func solve(path string, solverFunc solverFunc) (int, error) {

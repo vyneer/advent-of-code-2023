@@ -17,7 +17,7 @@ lint:
 	golangci-lint run
 
 test:
-	go test ./day*
+	go test
 
 clean:
 	rm -rf target
